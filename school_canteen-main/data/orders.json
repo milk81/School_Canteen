@@ -1,0 +1,130 @@
+{
+  "orders": [
+    {
+      "id": 1,
+      "student_id": 2,
+      "menu_item_id": 1,
+      "menu_item_name": "Каша манная с маслом",
+      "date": "2026-02-16",
+      "time": "18:05",
+      "type": "breakfast",
+      "price": 70,
+      "status": "ordered"
+    },
+    {
+      "id": 2,
+      "student_id": 2,
+      "meal_type": "breakfast",
+      "date": "2026-02-16",
+      "time": "18:31",
+      "issued_by": 3,
+      "status": "issued",
+      "menu_item_id": 1,
+      "menu_item_name": "Каша манная с маслом",
+      "type": "breakfast",
+      "price": 70
+    },
+    {
+      "id": 3,
+      "student_id": 2,
+      "meal_type": "lunch",
+      "date": "2026-02-16",
+      "time": "18:31",
+      "issued_by": 3,
+      "status": "issued",
+      "menu_item_id": 1,
+      "menu_item_name": "Каша манная с маслом",
+      "type": "breakfast",
+      "price": 70
+    },
+    {
+      "id": 4,
+      "student_id": 4,
+      "menu_item_id": 1,
+      "menu_item_name": "Каша манная с маслом",
+      "date": "2026-02-16",
+      "time": "18:43",
+      "type": "breakfast",
+      "price": 70,
+      "status": "ordered"
+    },
+    {
+      "id": 5,
+      "student_id": 1,
+      "meal_type": "breakfast",
+      "date": "2026-02-16",
+      "time": "18:58",
+      "issued_by": 3,
+      "status": "issued",
+      "menu_item_id": 4,
+      "menu_item_name": "Суп куриный с лапшой",
+      "type": "lunch",
+      "price": 120
+    },
+    {
+      "id": 6,
+      "student_id": 33,
+      "meal_type": "breakfast",
+      "date": "2026-02-16",
+      "time": "18:58",
+      "issued_by": 3,
+      "status": "issued",
+      "menu_item_id": 4,
+      "menu_item_name": "Суп куриный с лапшой",
+      "type": "lunch",
+      "price": 120
+    },
+    {
+      "id": 7,
+      "student_id": 2,
+      "meal_type": "breakfast",
+      "date": "2026-02-16",
+      "time": "19:17",
+      "issued_by": 3,
+      "status": "issued",
+      "menu_item_id": 1,
+      "menu_item_name": "Каша манная с маслом",
+      "type": "breakfast",
+      "price": 70
+    },
+    {
+      "id": 8,
+      "student_id": 2,
+      "meal_type": "breakfast",
+      "date": "2026-02-16",
+      "time": "19:18",
+      "issued_by": 3,
+      "status": "issued",
+      "menu_item_id": 4,
+      "menu_item_name": "Суп куриный с лапшой",
+      "type": "lunch",
+      "price": 120
+    },
+    {
+      "id": 9,
+      "student_id": 2,
+      "meal_type": "lunch",
+      "date": "2026-02-16",
+      "time": "19:19",
+      "issued_by": 3,
+      "status": "issued",
+      "menu_item_id": 4,
+      "menu_item_name": "Суп куриный с лапшой",
+      "type": "lunch",
+      "price": 120
+    },
+    {
+      "id": 10,
+      "student_id": 2,
+      "meal_type": "breakfast",
+      "date": "2026-02-16",
+      "time": "19:26",
+      "issued_by": 3,
+      "status": "issued",
+      "menu_item_id": 4,
+      "menu_item_name": "Суп куриный с лапшой",
+      "type": "lunch",
+      "price": 120
+    }
+  ]
+}

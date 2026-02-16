@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block title %}Меню - Повар{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h1>Меню на {{ selected_date }}</h1>
+        <p class="text-muted">Приготовление и выдача блюд</p>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Завтраки</h5>
+                <span class="badge bg-primary">{{ today_orders }} заказов сегодня</span>
+            </div>
+            <div class="card-body">
+                {% if breakfast_items %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Блюдо</th>
+                                    <th>Заказов</th>
+                                    <th>Состав</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in breakfast_items %}
+                                <tr>
+                                    <td>
+                                        <strong>{{ item.name }}</strong>
+                                        <br>
+                                        <small class="text-muted">{{ item.description }}</small>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-primary">{{ order_stats.get(item.id, 0) }}</span>
+                                    </td>
+                                    <td>
+                                        <small>{{ item.contains|join(', ') }}</small>
+                                        {% if item.allergens %}
+                                            <br>
+                                            <small class="text-danger">
+                                                Аллергены: {{ item.allergens|join(', ') }}
+                                            </small>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% set item_orders = [] %}
+                                        {% for order in orders if order.menu_item_id == item.id %}
+                                            {% set _ = item_orders.append(order) %}
+                                        {% endfor %}
+
+                                        {% if item_orders %}
+                                            <div class="btn-group btn-group-sm">
+                                                <button class="btn btn-outline-success" disabled>
+                                                    Приготовлено: {{ item_orders|selectattr('status', 'equalto', 'prepared')|list|length }}
+                                                </button>
+                                                <button class="btn btn-outline-primary" disabled>
+                                                    Выдано: {{ item_orders|selectattr('status', 'equalto', 'served')|list|length }}
+                                                </button>
+                                            </div>
+                                        {% else %}
+                                            <span class="text-muted">Нет заказов</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted">Завтраков нет в меню на этот день</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Обеды</h5>
+            </div>
+            <div class="card-body">
+                {% if lunch_items %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Блюдо</th>
+                                    <th>Заказов</th>
+                                    <th>Состав</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in lunch_items %}
+                                <tr>
+                                    <td>
+                                        <strong>{{ item.name }}</strong>
+                                        <br>
+                                        <small class="text-muted">{{ item.description }}</small>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-primary">{{ order_stats.get(item.id, 0) }}</span>
+                                    </td>
+                                    <td>
+                                        <small>{{ item.contains|join(', ') }}</small>
+                                        {% if item.allergens %}
+                                            <br>
+                                            <small class="text-danger">
+                                                Аллергены: {{ item.allergens|join(', ') }}
+                                            </small>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <!-- Обеды обрабатываются через статус заказа в разделе "Активные заказы" -->
+                                        <a href="{{ url_for('cook.orders_today') }}" class="btn btn-sm btn-info" title="Нажмите для полного списка заказов">
+                                            <i class="fas fa-list me-1"></i>Заказы
+                                        </a>
+                                        <form method="POST" action="{{ url_for('cook.consume_ingredients') }}" style="display:inline-block; margin-left:6px;">
+                                            <input type="hidden" name="menu_item_id" value="{{ item.id }}">
+                                            <input type="hidden" name="servings" value="1">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">Списать</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted">Обедов нет в меню на этот день</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Активные заказы</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    {% for order in today_orders[:10] if order.status != 'served' %}
+                    <div class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <strong>Заказ #{{ order.id }}</strong>
+                                <br>
+                                <small>Ученик #{{ order.student_id }}</small>
+                            </div>
+                            <div>
+                                <span class="badge {% if order.status == 'ordered' %}bg-warning{% else %}bg-success{% endif %}">
+                                    {{ order.status }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            {% if order.status == 'ordered' %}
+                                <a href="{{ url_for('cook.prepare_meal', order_id=order.id) }}"
+                                   class="btn btn-sm btn-success">Приготовить</a>
+                            {% elif order.status == 'prepared' %}
+                                <a href="{{ url_for('cook.serve_meal', order_id=order.id) }}"
+                                   class="btn btn-sm btn-primary">Выдать</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% if today_orders|selectattr('status', 'equalto', 'ordered')|list|length == 0 %}
+                    <p class="text-muted mt-3">Нет активных заказов</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Статистика за день</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <span class="fw-bold">Всего заказов:</span>
+                    <span class="float-end">{{ today_orders|length }}</span>
+                </div>
+                <div class="mb-3">
+                    <span class="fw-bold">Ожидают приготовления:</span>
+                    <span class="float-end badge bg-warning">
+                        {{ today_orders|selectattr('status', 'equalto', 'ordered')|list|length }}
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <span class="fw-bold">Приготовлены:</span>
+                    <span class="float-end badge bg-success">
+                        {{ today_orders|selectattr('status', 'equalto', 'prepared')|list|length }}
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <span class="fw-bold">Выданы:</span>
+                    <span class="float-end badge bg-primary">
+                        {{ today_orders|selectattr('status', 'equalto', 'served')|list|length }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

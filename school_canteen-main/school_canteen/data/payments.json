@@ -1,0 +1,22 @@
+{
+  "payments": [
+    {
+      "id": 1,
+      "user_id": 2,
+      "amount": 50,
+      "type": "meal_purchase",
+      "description": "Покупка: Каша молочная",
+      "date": "2026-02-09T19:19:24.809860",
+      "status": "completed"
+    },
+    {
+      "id": 2,
+      "user_id": 2,
+      "amount": 60,
+      "type": "meal_purchase",
+      "description": "Покупка: Омлет",
+      "date": "2026-02-09T19:20:09.880853",
+      "status": "completed"
+    }
+  ]
+}

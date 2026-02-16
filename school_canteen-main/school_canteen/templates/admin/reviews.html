@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block title %}Управление отзывами - Администратор{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h1>Управление отзывами</h1>
+        <p class="text-muted">Модерация отзывов пользователей</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Все отзывы</h5>
+        <div>
+            <span class="badge bg-warning">{{ reviews|selectattr('approved', 'equalto', false)|list|length }} на проверке</span>
+            <span class="badge bg-success ms-2">{{ reviews|selectattr('approved', 'equalto', true)|list|length }} одобрено</span>
+        </div>
+    </div>
+    <div class="card-body">
+        {% if reviews %}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Блюдо</th>
+                            <th>Ученик</th>
+                            <th>Оценка</th>
+                            <th>Отзыв</th>
+                            <th>Дата</th>
+                            <th>Статус</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for review in reviews %}
+                        <tr>
+                            <td>
+                                <strong>{{ review.menu_item.name }}</strong>
+                                <br>
+                                <small class="text-muted">{{ review.menu_item.type == 'breakfast' and 'Завтрак' or 'Обед' }}</small>
+                            </td>
+                            <td>
+                                {{ review.student.full_name }}
+                                <br>
+                                <small class="text-muted">{{ review.student.class }}</small>
+                            </td>
+                            <td>
+                                <div class="text-warning">
+                                    {% for i in range(review.rating) %}★{% endfor %}
+                                    {% for i in range(5-review.rating) %}☆{% endfor %}
+                                </div>
+                            </td>
+                            <td>{{ review.comment }}</td>
+                            <td>{{ review.date[:10] }}</td>
+                            <td>
+                                {% if review.approved %}
+                                    <span class="badge bg-success">Одобрен</span>
+                                {% else %}
+                                    <span class="badge bg-warning">На проверке</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if not review.approved %}
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="{{ url_for('admin.approve_review', review_id=review.id) }}"
+                                           class="btn btn-success"
+                                           onclick="return confirm('Одобрить этот отзыв?')">✓ Одобрить</a>
+                                        <a href="{{ url_for('admin.reject_review', review_id=review.id) }}"
+                                           class="btn btn-danger"
+                                           onclick="return confirm('Отклонить этот отзыв?')">✗ Отклонить</a>
+                                    </div>
+                                {% else %}
+                                    <a href="{{ url_for('admin.reject_review', review_id=review.id) }}"
+                                       class="btn btn-sm btn-outline-danger"
+                                       onclick="return confirm('Удалить этот отзыв?')">Удалить</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="text-center py-5">
+                <h4 class="text-muted">Отзывов пока нет</h4>
+                <p>Ученики еще не оставляли отзывов о блюдах</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Статистика отзывов</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <span class="fw-bold">Всего отзывов:</span>
+                    <span class="float-end">{{ reviews|length }}</span>
+                </div>
+                <div class="mb-3">
+                    <span class="fw-bold">Средняя оценка:</span>
+                    <span class="float-end text-warning">
+                        {% set avg_rating = reviews|sum(attribute='rating') / reviews|length if reviews else 0 %}
+                        {% for i in range(avg_rating|int) %}★{% endfor %}
+                        {% if avg_rating % 1 >= 0.5 %}½{% endif %}
+                        ({{ "%.1f"|format(avg_rating) }})
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <span class="fw-bold">Распределение оценок:</span>
+                    <div class="mt-2">
+                        {% for i in range(5, 0, -1) %}
+                            {% set count = reviews|selectattr('rating', 'equalto', i)|list|length %}
+                            <div class="d-flex align-items-center mb-1">
+                                <small class="text-warning">
+                                    {% for j in range(i) %}★{% endfor %}
+                                    {% for j in range(5-i) %}☆{% endfor %}
+                                </small>
+                                <div class="progress flex-grow-1 ms-2" style="height: 10px;">
+                                    <div class="progress-bar bg-warning"
+                                         style="width: {{ (count / reviews|length * 100) if reviews else 0 }}%">
+                                    </div>
+                                </div>
+                                <small class="ms-2">{{ count }}</small>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Инструкция по модерации</h5>
+            </div>
+            <div class="card-body">
+                <ol>
+                    <li>Проверяйте соответствие отзыва теме</li>
+                    <li>Отклоняйте отзывы с ненормативной лексикой</li>
+                    <li>Одобряйте конструктивные отзывы</li>
+                    <li>Удаляйте спам и рекламу</li>
+                    <li>Поощряйте подробные и полезные отзывы</li>
+                </ol>
+                <div class="alert alert-info">
+                    <strong>Важно:</strong> Отзывы влияют на репутацию столовой и помогают улучшить качество питания.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

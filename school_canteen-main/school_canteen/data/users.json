@@ -1,0 +1,56 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+      "role": "admin",
+      "full_name": "Администратор Системы",
+      "email": "admin@school.ru",
+      "class": null,
+      "allergies": [],
+      "balance": 0,
+      "created_at": "2026-02-09T17:49:07.525647"
+    },
+    {
+      "id": 2,
+      "username": "ivanov",
+      "password": "6f86ded7f21c4fa38e743da647865b1fba355b6535758132285772e8d2fde2fc",
+      "role": "student",
+      "full_name": "Иванов Иван Иванович",
+      "email": "ivanov@school.ru",
+      "class": "10A",
+      "allergies": [
+        "орехи",
+        "молоко"
+      ],
+      "preferences": [],
+      "balance": 99998040,
+      "created_at": "2026-02-09T17:49:07.525975"
+    },
+    {
+      "id": 3,
+      "username": "petrov",
+      "password": "c07d9e69d90a576c8a6690b35cc0912f48677cea2f560cf737058524744aff68",
+      "role": "cook",
+      "full_name": "Петров Петр Петрович",
+      "email": "petrov@school.ru",
+      "class": null,
+      "allergies": [],
+      "balance": 0,
+      "created_at": "2026-02-09T17:49:07.526342"
+    },
+    {
+      "id": 4,
+      "username": "weagret",
+      "password": "65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5",
+      "role": "cook",
+      "full_name": "goyda goyda goyda",
+      "email": "andrey.glazyrin8@gmail.com",
+      "class": null,
+      "allergies": [],
+      "balance": 0,
+      "created_at": "2026-02-09T18:19:21.076481"
+    }
+  ]
+}

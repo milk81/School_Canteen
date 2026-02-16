@@ -1,0 +1,22 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "student_id": 2,
+      "menu_item_id": 1,
+      "rating": 1,
+      "comment": "OK",
+      "date": "2026-02-09T19:19:56.470180",
+      "approved": true
+    },
+    {
+      "id": 2,
+      "student_id": 2,
+      "menu_item_id": 2,
+      "rating": 5,
+      "comment": "EZ",
+      "date": "2026-02-09T19:20:20.120398",
+      "approved": true
+    }
+  ]
+}

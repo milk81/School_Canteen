@@ -1,0 +1,760 @@
+{
+  "menu": [
+    {
+      "id": 1,
+      "date": "2026-02-16",
+      "type": "breakfast",
+      "name": "Каша манная с маслом",
+      "description": "Полезная молочная каша",
+      "price": 70,
+      "calories": 250,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "манка",
+        "молоко",
+        "сахар",
+        "масло"
+      ],
+      "available": true
+    },
+    {
+      "id": 1,
+      "date": "2026-02-16",
+      "type": "breakfast",
+      "name": "Омлет с сыром",
+      "description": "Воздушный омлет с сыром",
+      "price": 85,
+      "calories": 220,
+      "allergens": [
+        "яйца",
+        "молоко"
+      ],
+      "contains": [
+        "яйца",
+        "молоко",
+        "сыр"
+      ],
+      "available": true
+    },
+    {
+      "id": 1,
+      "date": "2026-02-16",
+      "type": "breakfast",
+      "name": "Бутерброд с сыром",
+      "description": "Свежий бутерброд",
+      "price": 60,
+      "calories": 180,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "хлеб",
+        "сыр"
+      ],
+      "available": true
+    },
+    {
+      "id": 4,
+      "date": "2026-02-16",
+      "type": "lunch",
+      "name": "Суп куриный с лапшой",
+      "description": "Наваристый куриный суп",
+      "price": 120,
+      "calories": 300,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "курица",
+        "лапша",
+        "овощи"
+      ],
+      "available": true
+    },
+    {
+      "id": 4,
+      "date": "2026-02-16",
+      "type": "lunch",
+      "name": "Котлета с картофельным пюре",
+      "description": "Домашняя котлета с пюре",
+      "price": 130,
+      "calories": 350,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "мясо",
+        "картофель",
+        "лук"
+      ],
+      "available": true
+    },
+    {
+      "id": 4,
+      "date": "2026-02-16",
+      "type": "lunch",
+      "name": "Салат овощной",
+      "description": "Свежий овощной салат",
+      "price": 80,
+      "calories": 150,
+      "allergens": [],
+      "contains": [
+        "помидоры",
+        "огурцы",
+        "лук"
+      ],
+      "available": true
+    },
+    {
+      "id": 7,
+      "date": "2026-02-17",
+      "type": "breakfast",
+      "name": "Каша манная с маслом",
+      "description": "Полезная молочная каша",
+      "price": 70,
+      "calories": 250,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "манка",
+        "молоко",
+        "сахар",
+        "масло"
+      ],
+      "available": true
+    },
+    {
+      "id": 7,
+      "date": "2026-02-17",
+      "type": "breakfast",
+      "name": "Омлет с сыром",
+      "description": "Воздушный омлет с сыром",
+      "price": 85,
+      "calories": 220,
+      "allergens": [
+        "яйца",
+        "молоко"
+      ],
+      "contains": [
+        "яйца",
+        "молоко",
+        "сыр"
+      ],
+      "available": true
+    },
+    {
+      "id": 7,
+      "date": "2026-02-17",
+      "type": "breakfast",
+      "name": "Бутерброд с сыром",
+      "description": "Свежий бутерброд",
+      "price": 60,
+      "calories": 180,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "хлеб",
+        "сыр"
+      ],
+      "available": true
+    },
+    {
+      "id": 10,
+      "date": "2026-02-17",
+      "type": "lunch",
+      "name": "Суп куриный с лапшой",
+      "description": "Наваристый куриный суп",
+      "price": 120,
+      "calories": 300,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "курица",
+        "лапша",
+        "овощи"
+      ],
+      "available": true
+    },
+    {
+      "id": 10,
+      "date": "2026-02-17",
+      "type": "lunch",
+      "name": "Котлета с картофельным пюре",
+      "description": "Домашняя котлета с пюре",
+      "price": 130,
+      "calories": 350,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "мясо",
+        "картофель",
+        "лук"
+      ],
+      "available": true
+    },
+    {
+      "id": 10,
+      "date": "2026-02-17",
+      "type": "lunch",
+      "name": "Салат овощной",
+      "description": "Свежий овощной салат",
+      "price": 80,
+      "calories": 150,
+      "allergens": [],
+      "contains": [
+        "помидоры",
+        "огурцы",
+        "лук"
+      ],
+      "available": true
+    },
+    {
+      "id": 13,
+      "date": "2026-02-18",
+      "type": "breakfast",
+      "name": "Каша манная с маслом",
+      "description": "Полезная молочная каша",
+      "price": 70,
+      "calories": 250,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "манка",
+        "молоко",
+        "сахар",
+        "масло"
+      ],
+      "available": true
+    },
+    {
+      "id": 13,
+      "date": "2026-02-18",
+      "type": "breakfast",
+      "name": "Омлет с сыром",
+      "description": "Воздушный омлет с сыром",
+      "price": 85,
+      "calories": 220,
+      "allergens": [
+        "яйца",
+        "молоко"
+      ],
+      "contains": [
+        "яйца",
+        "молоко",
+        "сыр"
+      ],
+      "available": true
+    },
+    {
+      "id": 13,
+      "date": "2026-02-18",
+      "type": "breakfast",
+      "name": "Бутерброд с сыром",
+      "description": "Свежий бутерброд",
+      "price": 60,
+      "calories": 180,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "хлеб",
+        "сыр"
+      ],
+      "available": true
+    },
+    {
+      "id": 16,
+      "date": "2026-02-18",
+      "type": "lunch",
+      "name": "Суп куриный с лапшой",
+      "description": "Наваристый куриный суп",
+      "price": 120,
+      "calories": 300,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "курица",
+        "лапша",
+        "овощи"
+      ],
+      "available": true
+    },
+    {
+      "id": 16,
+      "date": "2026-02-18",
+      "type": "lunch",
+      "name": "Котлета с картофельным пюре",
+      "description": "Домашняя котлета с пюре",
+      "price": 130,
+      "calories": 350,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "мясо",
+        "картофель",
+        "лук"
+      ],
+      "available": true
+    },
+    {
+      "id": 16,
+      "date": "2026-02-18",
+      "type": "lunch",
+      "name": "Салат овощной",
+      "description": "Свежий овощной салат",
+      "price": 80,
+      "calories": 150,
+      "allergens": [],
+      "contains": [
+        "помидоры",
+        "огурцы",
+        "лук"
+      ],
+      "available": true
+    },
+    {
+      "id": 19,
+      "date": "2026-02-19",
+      "type": "breakfast",
+      "name": "Каша манная с маслом",
+      "description": "Полезная молочная каша",
+      "price": 70,
+      "calories": 250,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "манка",
+        "молоко",
+        "сахар",
+        "масло"
+      ],
+      "available": true
+    },
+    {
+      "id": 19,
+      "date": "2026-02-19",
+      "type": "breakfast",
+      "name": "Омлет с сыром",
+      "description": "Воздушный омлет с сыром",
+      "price": 85,
+      "calories": 220,
+      "allergens": [
+        "яйца",
+        "молоко"
+      ],
+      "contains": [
+        "яйца",
+        "молоко",
+        "сыр"
+      ],
+      "available": true
+    },
+    {
+      "id": 19,
+      "date": "2026-02-19",
+      "type": "breakfast",
+      "name": "Бутерброд с сыром",
+      "description": "Свежий бутерброд",
+      "price": 60,
+      "calories": 180,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "хлеб",
+        "сыр"
+      ],
+      "available": true
+    },
+    {
+      "id": 22,
+      "date": "2026-02-19",
+      "type": "lunch",
+      "name": "Суп куриный с лапшой",
+      "description": "Наваристый куриный суп",
+      "price": 120,
+      "calories": 300,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "курица",
+        "лапша",
+        "овощи"
+      ],
+      "available": true
+    },
+    {
+      "id": 22,
+      "date": "2026-02-19",
+      "type": "lunch",
+      "name": "Котлета с картофельным пюре",
+      "description": "Домашняя котлета с пюре",
+      "price": 130,
+      "calories": 350,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "мясо",
+        "картофель",
+        "лук"
+      ],
+      "available": true
+    },
+    {
+      "id": 22,
+      "date": "2026-02-19",
+      "type": "lunch",
+      "name": "Салат овощной",
+      "description": "Свежий овощной салат",
+      "price": 80,
+      "calories": 150,
+      "allergens": [],
+      "contains": [
+        "помидоры",
+        "огурцы",
+        "лук"
+      ],
+      "available": true
+    },
+    {
+      "id": 25,
+      "date": "2026-02-20",
+      "type": "breakfast",
+      "name": "Каша манная с маслом",
+      "description": "Полезная молочная каша",
+      "price": 70,
+      "calories": 250,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "манка",
+        "молоко",
+        "сахар",
+        "масло"
+      ],
+      "available": true
+    },
+    {
+      "id": 25,
+      "date": "2026-02-20",
+      "type": "breakfast",
+      "name": "Омлет с сыром",
+      "description": "Воздушный омлет с сыром",
+      "price": 85,
+      "calories": 220,
+      "allergens": [
+        "яйца",
+        "молоко"
+      ],
+      "contains": [
+        "яйца",
+        "молоко",
+        "сыр"
+      ],
+      "available": true
+    },
+    {
+      "id": 25,
+      "date": "2026-02-20",
+      "type": "breakfast",
+      "name": "Бутерброд с сыром",
+      "description": "Свежий бутерброд",
+      "price": 60,
+      "calories": 180,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "хлеб",
+        "сыр"
+      ],
+      "available": true
+    },
+    {
+      "id": 28,
+      "date": "2026-02-20",
+      "type": "lunch",
+      "name": "Суп куриный с лапшой",
+      "description": "Наваристый куриный суп",
+      "price": 120,
+      "calories": 300,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "курица",
+        "лапша",
+        "овощи"
+      ],
+      "available": true
+    },
+    {
+      "id": 28,
+      "date": "2026-02-20",
+      "type": "lunch",
+      "name": "Котлета с картофельным пюре",
+      "description": "Домашняя котлета с пюре",
+      "price": 130,
+      "calories": 350,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "мясо",
+        "картофель",
+        "лук"
+      ],
+      "available": true
+    },
+    {
+      "id": 28,
+      "date": "2026-02-20",
+      "type": "lunch",
+      "name": "Салат овощной",
+      "description": "Свежий овощной салат",
+      "price": 80,
+      "calories": 150,
+      "allergens": [],
+      "contains": [
+        "помидоры",
+        "огурцы",
+        "лук"
+      ],
+      "available": true
+    },
+    {
+      "id": 31,
+      "date": "2026-02-21",
+      "type": "breakfast",
+      "name": "Каша манная с маслом",
+      "description": "Полезная молочная каша",
+      "price": 70,
+      "calories": 250,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "манка",
+        "молоко",
+        "сахар",
+        "масло"
+      ],
+      "available": true
+    },
+    {
+      "id": 31,
+      "date": "2026-02-21",
+      "type": "breakfast",
+      "name": "Омлет с сыром",
+      "description": "Воздушный омлет с сыром",
+      "price": 85,
+      "calories": 220,
+      "allergens": [
+        "яйца",
+        "молоко"
+      ],
+      "contains": [
+        "яйца",
+        "молоко",
+        "сыр"
+      ],
+      "available": true
+    },
+    {
+      "id": 31,
+      "date": "2026-02-21",
+      "type": "breakfast",
+      "name": "Бутерброд с сыром",
+      "description": "Свежий бутерброд",
+      "price": 60,
+      "calories": 180,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "хлеб",
+        "сыр"
+      ],
+      "available": true
+    },
+    {
+      "id": 34,
+      "date": "2026-02-21",
+      "type": "lunch",
+      "name": "Суп куриный с лапшой",
+      "description": "Наваристый куриный суп",
+      "price": 120,
+      "calories": 300,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "курица",
+        "лапша",
+        "овощи"
+      ],
+      "available": true
+    },
+    {
+      "id": 34,
+      "date": "2026-02-21",
+      "type": "lunch",
+      "name": "Котлета с картофельным пюре",
+      "description": "Домашняя котлета с пюре",
+      "price": 130,
+      "calories": 350,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "мясо",
+        "картофель",
+        "лук"
+      ],
+      "available": true
+    },
+    {
+      "id": 34,
+      "date": "2026-02-21",
+      "type": "lunch",
+      "name": "Салат овощной",
+      "description": "Свежий овощной салат",
+      "price": 80,
+      "calories": 150,
+      "allergens": [],
+      "contains": [
+        "помидоры",
+        "огурцы",
+        "лук"
+      ],
+      "available": true
+    },
+    {
+      "id": 37,
+      "date": "2026-02-22",
+      "type": "breakfast",
+      "name": "Каша манная с маслом",
+      "description": "Полезная молочная каша",
+      "price": 70,
+      "calories": 250,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "манка",
+        "молоко",
+        "сахар",
+        "масло"
+      ],
+      "available": true
+    },
+    {
+      "id": 37,
+      "date": "2026-02-22",
+      "type": "breakfast",
+      "name": "Омлет с сыром",
+      "description": "Воздушный омлет с сыром",
+      "price": 85,
+      "calories": 220,
+      "allergens": [
+        "яйца",
+        "молоко"
+      ],
+      "contains": [
+        "яйца",
+        "молоко",
+        "сыр"
+      ],
+      "available": true
+    },
+    {
+      "id": 37,
+      "date": "2026-02-22",
+      "type": "breakfast",
+      "name": "Бутерброд с сыром",
+      "description": "Свежий бутерброд",
+      "price": 60,
+      "calories": 180,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "хлеб",
+        "сыр"
+      ],
+      "available": true
+    },
+    {
+      "id": 40,
+      "date": "2026-02-22",
+      "type": "lunch",
+      "name": "Суп куриный с лапшой",
+      "description": "Наваристый куриный суп",
+      "price": 120,
+      "calories": 300,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "курица",
+        "лапша",
+        "овощи"
+      ],
+      "available": true
+    },
+    {
+      "id": 40,
+      "date": "2026-02-22",
+      "type": "lunch",
+      "name": "Котлета с картофельным пюре",
+      "description": "Домашняя котлета с пюре",
+      "price": 130,
+      "calories": 350,
+      "allergens": [
+        "глютен"
+      ],
+      "contains": [
+        "мясо",
+        "картофель",
+        "лук"
+      ],
+      "available": true
+    },
+    {
+      "id": 40,
+      "date": "2026-02-22",
+      "type": "lunch",
+      "name": "Салат овощной",
+      "description": "Свежий овощной салат",
+      "price": 80,
+      "calories": 150,
+      "allergens": [],
+      "contains": [
+        "помидоры",
+        "огурцы",
+        "лук"
+      ],
+      "available": true
+    }
+  ]
+}

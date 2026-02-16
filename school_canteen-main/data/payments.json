@@ -1,0 +1,265 @@
+{
+  "payments": [
+    {
+      "id": 1,
+      "user_id": 2,
+      "amount": 100,
+      "type": "single",
+      "description": "Оплата питания",
+      "date": "2026-02-16T18:05:24.506230",
+      "status": "completed"
+    },
+    {
+      "id": 2,
+      "user_id": 2,
+      "amount": 70,
+      "type": "meal_purchase",
+      "description": "Покупка: Каша манная с маслом",
+      "date": "2026-02-16T18:05:49.430012",
+      "status": "completed"
+    },
+    {
+      "id": 3,
+      "user_id": 2,
+      "amount": 1000,
+      "type": "recharge",
+      "description": "Пополнение баланса",
+      "date": "2026-02-16T18:07:20.943665",
+      "status": "completed"
+    },
+    {
+      "id": 4,
+      "user_id": 2,
+      "amount": 1000,
+      "type": "recharge",
+      "description": "Пополнение баланса",
+      "date": "2026-02-16T18:07:37.146189",
+      "status": "completed"
+    },
+    {
+      "id": 5,
+      "user_id": 2,
+      "amount": 3000,
+      "type": "subscription",
+      "description": "Завтраки",
+      "date": "2026-02-16T18:07:49.544293",
+      "status": "completed"
+    },
+    {
+      "id": 6,
+      "user_id": 2,
+      "amount": 100,
+      "type": "single",
+      "description": "Оплата питания",
+      "date": "2026-02-16T18:08:10.644329",
+      "status": "completed"
+    },
+    {
+      "id": 7,
+      "user_id": 2,
+      "amount": 100,
+      "type": "single",
+      "description": "Оплата питания",
+      "date": "2026-02-16T18:08:14.955704",
+      "status": "completed"
+    },
+    {
+      "id": 8,
+      "user_id": 2,
+      "amount": 100,
+      "type": "single",
+      "description": "Оплата питания",
+      "date": "2026-02-16T18:09:57.032025",
+      "status": "completed"
+    },
+    {
+      "id": 9,
+      "user_id": 2,
+      "amount": 1000,
+      "type": "recharge",
+      "description": "Пополнение баланса",
+      "date": "2026-02-16T18:11:26.353340",
+      "status": "completed"
+    },
+    {
+      "id": 10,
+      "user_id": 2,
+      "amount": 100,
+      "type": "single",
+      "description": "Оплата питания",
+      "date": "2026-02-16T18:11:37.769792",
+      "status": "completed"
+    },
+    {
+      "id": 11,
+      "user_id": 2,
+      "amount": 100,
+      "type": "single",
+      "description": "Оплата питания",
+      "date": "2026-02-16T18:18:09.704052",
+      "status": "completed"
+    },
+    {
+      "id": 12,
+      "user_id": 2,
+      "amount": 100,
+      "type": "single",
+      "description": "Оплата питания",
+      "date": "2026-02-16T18:18:13.262290",
+      "status": "completed"
+    },
+    {
+      "id": 13,
+      "user_id": 2,
+      "amount": 1000,
+      "type": "recharge",
+      "description": "Пополнение баланса",
+      "date": "2026-02-16T18:19:41.614730",
+      "status": "completed"
+    },
+    {
+      "id": 14,
+      "user_id": 2,
+      "amount": 2000,
+      "type": "recharge",
+      "description": "Пополнение баланса",
+      "date": "2026-02-16T18:20:21.670583",
+      "status": "completed"
+    },
+    {
+      "id": 15,
+      "user_id": 2,
+      "amount": 3000,
+      "type": "subscription",
+      "description": "Завтраки+Обеды",
+      "date": "2026-02-16T18:20:27.007754",
+      "status": "completed"
+    },
+    {
+      "id": 16,
+      "user_id": 2,
+      "amount": 3000,
+      "type": "recharge",
+      "description": "Пополнение баланса",
+      "date": "2026-02-16T18:20:39.370051",
+      "status": "completed"
+    },
+    {
+      "id": 17,
+      "user_id": 2,
+      "amount": 3000,
+      "type": "subscription",
+      "description": "Завтраки+Обеды",
+      "date": "2026-02-16T18:20:49.947179",
+      "status": "completed"
+    },
+    {
+      "id": 18,
+      "user_id": 2,
+      "amount": 100,
+      "type": "single",
+      "description": "Оплата питания",
+      "date": "2026-02-16T18:25:25.917983",
+      "status": "completed"
+    },
+    {
+      "id": 19,
+      "user_id": 2,
+      "amount": 1000,
+      "type": "recharge",
+      "description": "Пополнение баланса",
+      "date": "2026-02-16T18:25:42.029476",
+      "status": "completed"
+    },
+    {
+      "id": 20,
+      "user_id": 2,
+      "amount": 2000,
+      "type": "recharge",
+      "description": "Пополнение баланса",
+      "date": "2026-02-16T18:26:08.549697",
+      "status": "completed"
+    },
+    {
+      "id": 21,
+      "user_id": 2,
+      "amount": 3000,
+      "type": "subscription",
+      "description": "Завтраки",
+      "date": "2026-02-16T18:26:12.687272",
+      "status": "completed"
+    },
+    {
+      "id": 22,
+      "user_id": 2,
+      "amount": 100,
+      "type": "single",
+      "description": "Оплата питания",
+      "date": "2026-02-16T18:30:44.163764",
+      "status": "completed"
+    },
+    {
+      "id": 23,
+      "user_id": 4,
+      "amount": 70,
+      "type": "meal_purchase",
+      "description": "Покупка: Каша манная с маслом",
+      "date": "2026-02-16T18:43:55.800910",
+      "status": "completed"
+    },
+    {
+      "id": 24,
+      "user_id": 4,
+      "amount": 100,
+      "type": "single",
+      "description": "Оплата питания",
+      "date": "2026-02-16T18:45:31.875740",
+      "status": "completed"
+    },
+    {
+      "id": 25,
+      "user_id": 4,
+      "amount": 100,
+      "type": "single",
+      "description": "Оплата питания",
+      "date": "2026-02-16T18:46:18.721150",
+      "status": "completed"
+    },
+    {
+      "id": 26,
+      "user_id": 4,
+      "amount": 100,
+      "type": "single",
+      "description": "Оплата питания",
+      "date": "2026-02-16T18:46:27.686700",
+      "status": "completed"
+    },
+    {
+      "id": 27,
+      "user_id": 2,
+      "amount": 100,
+      "type": "single",
+      "description": "Оплата питания",
+      "date": "2026-02-16T18:55:10.008701",
+      "status": "completed"
+    },
+    {
+      "id": 28,
+      "user_id": 2,
+      "amount": 1000,
+      "type": "recharge",
+      "description": "Пополнение баланса",
+      "date": "2026-02-16T18:59:16.159058",
+      "status": "completed"
+    },
+    {
+      "id": 29,
+      "user_id": 2,
+      "amount": 1000,
+      "type": "recharge",
+      "description": "Пополнение баланса",
+      "date": "2026-02-16T19:08:15.201738",
+      "status": "completed"
+    }
+  ]
+}

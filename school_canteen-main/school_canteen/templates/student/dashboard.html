@@ -1,0 +1,334 @@
+{% extends "base.html" %}
+
+{% block title %}Панель ученика - Школьная столовая{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h1>Панель управления ученика</h1>
+        <p class="text-muted">Добро пожаловать, {{ user.full_name }} ({{ user.class }})</p>
+    </div>
+</div>
+
+<!-- Инструкции для ученика + быстрые действия -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading">
+                <i class="fas fa-lightbulb me-2"></i>Как пользоваться столовой?
+            </h5>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <strong>1️⃣ Заказ питания:</strong><br>
+                        <a href="{{ url_for('student.menu') }}" class="btn btn-sm btn-success mt-1">
+                            <i class="fas fa-shopping-cart me-1"></i>Перейти в меню
+                        </a>
+                        <small class="d-block text-muted mt-1">Выберите блюдо из меню и нажмите "Заказать"</small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <strong>2️⃣ Указать аллергии:</strong><br>
+                        <a href="{{ url_for('student.profile') }}#allergies" class="btn btn-sm btn-warning mt-1">
+                            <i class="fas fa-bell me-1"></i>Перейти в профиль
+                        </a>
+                        <small class="d-block text-muted mt-1">Отредактируйте список ваших аллергий</small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <strong>3️⃣ Оставить отзыв:</strong><br>
+                        <a href="{{ url_for('student.orders') }}" class="btn btn-sm btn-primary mt-1">
+                            <i class="fas fa-star me-1"></i>Мои заказы
+                        </a>
+                        <small class="d-block text-muted mt-1">Внутри "Мои заказы" нажмите на уже полученное питание, чтобы оставить отзыв</small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <strong>4️⃣ Подтвердить получение:</strong><br>
+                        <a href="{{ url_for('student.orders') }}" class="btn btn-sm btn-success mt-1">
+                            <i class="fas fa-check me-1"></i>Отметить в заказах
+                        </a>
+                        <small class="d-block text-muted mt-1">Нажмите "Подтвердить получение" после получения питания</small>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="stat-card bg-primary text-white">
+            <h3>{{ user.balance }} ₽</h3>
+            <p>Баланс</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card bg-success text-white">
+            <h3>{{ meals_this_month }}</h3>
+            <p>Питаний в этом месяце</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card bg-warning text-white">
+            <h3>{{ active_subscriptions }}</h3>
+            <p>Активных абонементов</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Сегодняшнее меню</h5>
+            </div>
+            <div class="card-body">
+                {% if menu_today %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Завтрак</h6>
+                            {% for item in menu_today if item.type == 'breakfast' %}
+                                <div class="menu-item breakfast">
+                                    <h6>{{ item.name }}</h6>
+                                    <p>{{ item.description }}</p>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-success">{{ item.price }} ₽</span>
+                                        {% if item.allergens %}
+                                            <small class="text-danger">Аллергены: {{ item.allergens|join(', ') }}</small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Обед</h6>
+                            {% for item in menu_today if item.type == 'lunch' %}
+                                <div class="menu-item lunch">
+                                    <h6>{{ item.name }}</h6>
+                                    <p>{{ item.description }}</p>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-success">{{ item.price }} ₽</span>
+                                        {% if item.allergens %}
+                                            <small class="text-danger">Аллергены: {{ item.allergens|join(', ') }}</small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <p class="text-muted">На сегодня меню не загружено</p>
+                {% endif %}
+                <div class="mt-3">
+                    <a href="{{ url_for('student.menu') }}" class="btn btn-outline-primary">Посмотреть полное меню</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- В разделе оплаты обновим форму -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Оплата питания</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <form method="POST" action="{{ url_for('student.pay') }}">
+                            <h6>Разовый платеж</h6>
+                            <div class="mb-3">
+                                <label for="single_amount" class="form-label">Сумма (руб)</label>
+                                <input type="number" class="form-control" id="single_amount"
+                                       name="amount" min="50" max="500" value="100" required>
+                                <input type="hidden" name="type" value="single">
+                                <div class="form-text">Минимальная сумма: 50 ₽</div>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">Оплатить разово</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <form method="POST" action="{{ url_for('student.pay') }}">
+                            <h6>Абонемент на месяц</h6>
+                            <div class="mb-3">
+                                <label for="subscription_type" class="form-label">Тип абонемента</label>
+                                <select class="form-select" id="subscription_type" name="description">
+                                    <option value="Завтраки">Только завтраки (1500 ₽)</option>
+                                    <option value="Обеды">Только обеды (2000 ₽)</option>
+                                    <option value="Завтраки+Обеды">Завтраки + обеды (3000 ₽)</option>
+                                </select>
+                            </div>
+                            <input type="hidden" name="type" value="subscription">
+                            <input type="hidden" name="amount" value="3000">
+                            <button type="submit" class="btn btn-warning w-100">Купить абонемент</button>
+                            <div class="form-text mt-2">Абонемент действует 30 дней</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Мой профиль</h5>
+            </div>
+            <div class="card-body">
+                <div class="profile-info">
+                    <div class="profile-label">Твой ID</div>
+                    <div class="profile-value fw-bold text-primary" style="font-size: 1.2em;">{{ user.id }}</div>
+                    <small class="text-muted d-block mt-1">Для повара: скажи свой номер</small>
+                </div>
+                <hr>
+                <div class="profile-info">
+                    <div class="profile-label">ФИО</div>
+                    <div class="profile-value">{{ user.full_name }}</div>
+                </div>
+                <div class="profile-info">
+                    <div class="profile-label">Класс</div>
+                    <div class="profile-value">{{ user.class }}</div>
+                </div>
+                <div class="profile-info">
+                    <div class="profile-label">Аллергии</div>
+                    <div class="profile-value">
+                        {% if user.allergies %}
+                            {{ user.allergies|join(', ') }}
+                        {% else %}
+                            Нет аллергий
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <div class="profile-label">Email</div>
+                    <div class="profile-value">{{ user.email }}</div>
+                </div>
+                <div class="mt-3">
+                    <a href="{{ url_for('student.profile') }}" class="btn btn-outline-primary w-100">Редактировать профиль</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Последние отметки о питании</h5>
+            </div>
+            <div class="card-body">
+                {% if orders %}
+                    <div class="list-group">
+                        {% for order in orders %}
+                            <div class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    <span class="fw-bold">
+                                        {% if order.meal_type == 'breakfast' %}Завтрак{% else %}Обед{% endif %}
+                                    </span>
+                                    <span class="badge bg-success">{{ order.date }}</span>
+                                </div>
+                                <small class="text-muted">{{ order.time }}</small>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-muted">Нет отметок о питании</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- В начале контента после приветствия -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="stat-card">
+            <h3>{{ user.balance }} ₽</h3>
+            <p>Баланс</p>
+            <a href="{{ url_for('student.profile') }}#recharge" class="btn btn-sm btn-light mt-2">
+                <i class="fas fa-plus me-1"></i> Пополнить
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card secondary">
+            <h3>{{ today_orders|length }}</h3>
+            <p>Заказов сегодня</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card accent">
+            <h3>{{ reviews_count }}</h3>
+            <p>Отзывов</p>
+            <a href="{{ url_for('student.reviews') }}" class="btn btn-sm btn-light mt-2">
+                <i class="fas fa-star me-1"></i> Посмотреть
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Секция быстрой оплаты -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">Быстрая оплата</h5>
+    </div>
+    <div class="card-body">
+        <form method="POST" action="{{ url_for('student.pay') }}" class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Тип оплаты</label>
+                <div class="mb-3">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="type" id="single" value="single" checked>
+                        <label class="form-check-label" for="single">Разовый</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="type" id="subscription" value="subscription">
+                        <label class="form-check-label" for="subscription">Абонемент</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="amount" class="form-label">Сумма (руб)</label>
+                    <input type="number" class="form-control" id="amount" name="amount"
+                           min="50" max="5000" value="150" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">
+                    <i class="fas fa-credit-card me-2"></i>Оплатить
+                </button>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Предустановленные суммы</label>
+                <div class="d-grid gap-2">
+                    <button type="button" class="btn btn-outline-primary set-amount" data-amount="100">
+                        100 ₽ (Завтрак)
+                    </button>
+                    <button type="button" class="btn btn-outline-primary set-amount" data-amount="150">
+                        150 ₽ (Обед)
+                    </button>
+                    <button type="button" class="btn btn-outline-primary set-amount" data-amount="3000">
+                        3,000 ₽ (Абонемент на месяц)
+                    </button>
+                </div>
+                <div class="mt-3">
+                    <small class="text-muted">
+                        <i class="fas fa-info-circle me-1"></i>
+                        Абонемент действует 30 дней с момента покупки
+                    </small>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+document.querySelectorAll('.set-amount').forEach(button => {
+    button.addEventListener('click', function() {
+        document.getElementById('amount').value = this.dataset.amount;
+        if (this.dataset.amount == "3000") {
+            document.getElementById('subscription').checked = true;
+        } else {
+            document.getElementById('single').checked = true;
+        }
+    });
+});
+</script>

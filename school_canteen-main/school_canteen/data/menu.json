@@ -1,0 +1,564 @@
+{
+  "menu": [
+    {
+      "id": 1,
+      "date": "2026-02-09",
+      "type": "breakfast",
+      "name": "Каша молочная",
+      "description": "Манная каша с маслом",
+      "price": 50,
+      "calories": 250,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "молоко",
+        "манка",
+        "сахар",
+        "масло"
+      ],
+      "available": true,
+      "preparation_time": "15 мин"
+    },
+    {
+      "id": 2,
+      "date": "2026-02-09",
+      "type": "breakfast",
+      "name": "Омлет",
+      "description": "Омлет с зеленью",
+      "price": 60,
+      "calories": 200,
+      "allergens": [
+        "яйца"
+      ],
+      "contains": [
+        "яйца",
+        "молоко",
+        "зелень"
+      ],
+      "available": true,
+      "preparation_time": "10 мин"
+    },
+    {
+      "id": 3,
+      "date": "2026-02-09",
+      "type": "lunch",
+      "name": "Суп куриный",
+      "description": "Куриный суп с лапшой",
+      "price": 80,
+      "calories": 300,
+      "allergens": [
+        "глютен",
+        "курица"
+      ],
+      "contains": [
+        "курица",
+        "лапша",
+        "овощи"
+      ],
+      "available": true,
+      "preparation_time": "30 мин"
+    },
+    {
+      "id": 4,
+      "date": "2026-02-09",
+      "type": "lunch",
+      "name": "Котлета с пюре",
+      "description": "Куриная котлета с картофельным пюре",
+      "price": 90,
+      "calories": 350,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "курица",
+        "картофель",
+        "молоко"
+      ],
+      "available": true,
+      "preparation_time": "25 мин"
+    },
+    {
+      "id": 5,
+      "date": "2026-02-10",
+      "type": "breakfast",
+      "name": "Каша молочная",
+      "description": "Манная каша с маслом",
+      "price": 50,
+      "calories": 250,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "молоко",
+        "манка",
+        "сахар",
+        "масло"
+      ],
+      "available": true,
+      "preparation_time": "15 мин"
+    },
+    {
+      "id": 6,
+      "date": "2026-02-10",
+      "type": "breakfast",
+      "name": "Омлет",
+      "description": "Омлет с зеленью",
+      "price": 60,
+      "calories": 200,
+      "allergens": [
+        "яйца"
+      ],
+      "contains": [
+        "яйца",
+        "молоко",
+        "зелень"
+      ],
+      "available": true,
+      "preparation_time": "10 мин"
+    },
+    {
+      "id": 7,
+      "date": "2026-02-10",
+      "type": "lunch",
+      "name": "Суп куриный",
+      "description": "Куриный суп с лапшой",
+      "price": 80,
+      "calories": 300,
+      "allergens": [
+        "глютен",
+        "курица"
+      ],
+      "contains": [
+        "курица",
+        "лапша",
+        "овощи"
+      ],
+      "available": true,
+      "preparation_time": "30 мин"
+    },
+    {
+      "id": 8,
+      "date": "2026-02-10",
+      "type": "lunch",
+      "name": "Котлета с пюре",
+      "description": "Куриная котлета с картофельным пюре",
+      "price": 90,
+      "calories": 350,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "курица",
+        "картофель",
+        "молоко"
+      ],
+      "available": true,
+      "preparation_time": "25 мин"
+    },
+    {
+      "id": 9,
+      "date": "2026-02-11",
+      "type": "breakfast",
+      "name": "Каша молочная",
+      "description": "Манная каша с маслом",
+      "price": 50,
+      "calories": 250,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "молоко",
+        "манка",
+        "сахар",
+        "масло"
+      ],
+      "available": true,
+      "preparation_time": "15 мин"
+    },
+    {
+      "id": 10,
+      "date": "2026-02-11",
+      "type": "breakfast",
+      "name": "Омлет",
+      "description": "Омлет с зеленью",
+      "price": 60,
+      "calories": 200,
+      "allergens": [
+        "яйца"
+      ],
+      "contains": [
+        "яйца",
+        "молоко",
+        "зелень"
+      ],
+      "available": true,
+      "preparation_time": "10 мин"
+    },
+    {
+      "id": 11,
+      "date": "2026-02-11",
+      "type": "lunch",
+      "name": "Суп куриный",
+      "description": "Куриный суп с лапшой",
+      "price": 80,
+      "calories": 300,
+      "allergens": [
+        "глютен",
+        "курица"
+      ],
+      "contains": [
+        "курица",
+        "лапша",
+        "овощи"
+      ],
+      "available": true,
+      "preparation_time": "30 мин"
+    },
+    {
+      "id": 12,
+      "date": "2026-02-11",
+      "type": "lunch",
+      "name": "Котлета с пюре",
+      "description": "Куриная котлета с картофельным пюре",
+      "price": 90,
+      "calories": 350,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "курица",
+        "картофель",
+        "молоко"
+      ],
+      "available": true,
+      "preparation_time": "25 мин"
+    },
+    {
+      "id": 13,
+      "date": "2026-02-12",
+      "type": "breakfast",
+      "name": "Каша молочная",
+      "description": "Манная каша с маслом",
+      "price": 50,
+      "calories": 250,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "молоко",
+        "манка",
+        "сахар",
+        "масло"
+      ],
+      "available": true,
+      "preparation_time": "15 мин"
+    },
+    {
+      "id": 14,
+      "date": "2026-02-12",
+      "type": "breakfast",
+      "name": "Омлет",
+      "description": "Омлет с зеленью",
+      "price": 60,
+      "calories": 200,
+      "allergens": [
+        "яйца"
+      ],
+      "contains": [
+        "яйца",
+        "молоко",
+        "зелень"
+      ],
+      "available": true,
+      "preparation_time": "10 мин"
+    },
+    {
+      "id": 15,
+      "date": "2026-02-12",
+      "type": "lunch",
+      "name": "Суп куриный",
+      "description": "Куриный суп с лапшой",
+      "price": 80,
+      "calories": 300,
+      "allergens": [
+        "глютен",
+        "курица"
+      ],
+      "contains": [
+        "курица",
+        "лапша",
+        "овощи"
+      ],
+      "available": true,
+      "preparation_time": "30 мин"
+    },
+    {
+      "id": 16,
+      "date": "2026-02-12",
+      "type": "lunch",
+      "name": "Котлета с пюре",
+      "description": "Куриная котлета с картофельным пюре",
+      "price": 90,
+      "calories": 350,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "курица",
+        "картофель",
+        "молоко"
+      ],
+      "available": true,
+      "preparation_time": "25 мин"
+    },
+    {
+      "id": 17,
+      "date": "2026-02-13",
+      "type": "breakfast",
+      "name": "Каша молочная",
+      "description": "Манная каша с маслом",
+      "price": 50,
+      "calories": 250,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "молоко",
+        "манка",
+        "сахар",
+        "масло"
+      ],
+      "available": true,
+      "preparation_time": "15 мин"
+    },
+    {
+      "id": 18,
+      "date": "2026-02-13",
+      "type": "breakfast",
+      "name": "Омлет",
+      "description": "Омлет с зеленью",
+      "price": 60,
+      "calories": 200,
+      "allergens": [
+        "яйца"
+      ],
+      "contains": [
+        "яйца",
+        "молоко",
+        "зелень"
+      ],
+      "available": true,
+      "preparation_time": "10 мин"
+    },
+    {
+      "id": 19,
+      "date": "2026-02-13",
+      "type": "lunch",
+      "name": "Суп куриный",
+      "description": "Куриный суп с лапшой",
+      "price": 80,
+      "calories": 300,
+      "allergens": [
+        "глютен",
+        "курица"
+      ],
+      "contains": [
+        "курица",
+        "лапша",
+        "овощи"
+      ],
+      "available": true,
+      "preparation_time": "30 мин"
+    },
+    {
+      "id": 20,
+      "date": "2026-02-13",
+      "type": "lunch",
+      "name": "Котлета с пюре",
+      "description": "Куриная котлета с картофельным пюре",
+      "price": 90,
+      "calories": 350,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "курица",
+        "картофель",
+        "молоко"
+      ],
+      "available": true,
+      "preparation_time": "25 мин"
+    },
+    {
+      "id": 21,
+      "date": "2026-02-14",
+      "type": "breakfast",
+      "name": "Каша молочная",
+      "description": "Манная каша с маслом",
+      "price": 50,
+      "calories": 250,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "молоко",
+        "манка",
+        "сахар",
+        "масло"
+      ],
+      "available": true,
+      "preparation_time": "15 мин"
+    },
+    {
+      "id": 22,
+      "date": "2026-02-14",
+      "type": "breakfast",
+      "name": "Омлет",
+      "description": "Омлет с зеленью",
+      "price": 60,
+      "calories": 200,
+      "allergens": [
+        "яйца"
+      ],
+      "contains": [
+        "яйца",
+        "молоко",
+        "зелень"
+      ],
+      "available": true,
+      "preparation_time": "10 мин"
+    },
+    {
+      "id": 23,
+      "date": "2026-02-14",
+      "type": "lunch",
+      "name": "Суп куриный",
+      "description": "Куриный суп с лапшой",
+      "price": 80,
+      "calories": 300,
+      "allergens": [
+        "глютен",
+        "курица"
+      ],
+      "contains": [
+        "курица",
+        "лапша",
+        "овощи"
+      ],
+      "available": true,
+      "preparation_time": "30 мин"
+    },
+    {
+      "id": 24,
+      "date": "2026-02-14",
+      "type": "lunch",
+      "name": "Котлета с пюре",
+      "description": "Куриная котлета с картофельным пюре",
+      "price": 90,
+      "calories": 350,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "курица",
+        "картофель",
+        "молоко"
+      ],
+      "available": true,
+      "preparation_time": "25 мин"
+    },
+    {
+      "id": 25,
+      "date": "2026-02-15",
+      "type": "breakfast",
+      "name": "Каша молочная",
+      "description": "Манная каша с маслом",
+      "price": 50,
+      "calories": 250,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "молоко",
+        "манка",
+        "сахар",
+        "масло"
+      ],
+      "available": true,
+      "preparation_time": "15 мин"
+    },
+    {
+      "id": 26,
+      "date": "2026-02-15",
+      "type": "breakfast",
+      "name": "Омлет",
+      "description": "Омлет с зеленью",
+      "price": 60,
+      "calories": 200,
+      "allergens": [
+        "яйца"
+      ],
+      "contains": [
+        "яйца",
+        "молоко",
+        "зелень"
+      ],
+      "available": true,
+      "preparation_time": "10 мин"
+    },
+    {
+      "id": 27,
+      "date": "2026-02-15",
+      "type": "lunch",
+      "name": "Суп куриный",
+      "description": "Куриный суп с лапшой",
+      "price": 80,
+      "calories": 300,
+      "allergens": [
+        "глютен",
+        "курица"
+      ],
+      "contains": [
+        "курица",
+        "лапша",
+        "овощи"
+      ],
+      "available": true,
+      "preparation_time": "30 мин"
+    },
+    {
+      "id": 28,
+      "date": "2026-02-15",
+      "type": "lunch",
+      "name": "Котлета с пюре",
+      "description": "Куриная котлета с картофельным пюре",
+      "price": 90,
+      "calories": 350,
+      "allergens": [
+        "молоко",
+        "глютен"
+      ],
+      "contains": [
+        "курица",
+        "картофель",
+        "молоко"
+      ],
+      "available": true,
+      "preparation_time": "25 мин"
+    }
+  ]
+}

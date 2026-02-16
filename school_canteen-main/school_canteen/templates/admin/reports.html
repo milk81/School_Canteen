@@ -1,0 +1,264 @@
+{% extends "base.html" %}
+
+{% block title %}Отчеты - Школьная столовая{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h1>Отчетность и аналитика</h1>
+        <p class="text-muted">Формирование отчетов по питанию и финансовым показателям</p>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">Генератор отчетов</h5>
+    </div>
+    <div class="card-body">
+        <form method="GET" action="{{ url_for('admin.reports') }}" class="row g-3">
+            <div class="col-md-3">
+                <label for="report_type" class="form-label">Тип отчета</label>
+                <select class="form-select" id="report_type" name="report_type">
+                    <option value="attendance">Посещаемость</option>
+                    <option value="financial">Финансовый</option>
+                    <option value="nutrition">Питание</option>
+                    <option value="inventory">Инвентарь</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="start_date" class="form-label">Начало периода</label>
+                <input type="date" class="form-control" id="start_date" name="start_date">
+            </div>
+            <div class="col-md-3">
+                <label for="end_date" class="form-label">Конец периода</label>
+                <input type="date" class="form-control" id="end_date" name="end_date">
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+                <div class="d-grid gap-2 w-100">
+                    <button type="submit" class="btn btn-primary">Сформировать</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Посещаемость по дням</h5>
+            </div>
+            <div class="card-body">
+                {% if attendance_by_day %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Дата</th>
+                                    <th>Завтраки</th>
+                                    <th>Обеды</th>
+                                    <th>Всего</th>
+                                    <th>% посещаемости</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for date, count in attendance_by_day %}
+                                <tr>
+                                    <td>{{ date }}</td>
+                                    <td>15</td>
+                                    <td>25</td>
+                                    <td>{{ count }}</td>
+                                    <td>
+                                        {% set percentage = (count / 100 * 100)|int %}
+                                        <div class="progress" style="height: 20px;">
+                                            <div class="progress-bar {% if percentage > 80 %}bg-success{% elif percentage > 50 %}bg-warning{% else %}bg-danger{% endif %}"
+                                                 style="width: {{ percentage }}%">
+                                                {{ percentage }}%
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <h6>Общая статистика:</h6>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <span class="badge bg-primary">Всего питаний: {{ total_orders }}</span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <span class="badge bg-success">Средняя посещаемость: 75%</span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <span class="badge bg-info">Пик посещаемости: понедельник</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                {% else %}
+                    <p class="text-muted">Данные для отчета отсутствуют</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Посещаемость по классам</h5>
+            </div>
+            <div class="card-body">
+                {% if class_attendance %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Класс</th>
+                                    <th>Количество учеников</th>
+                                    <th>Посещений</th>
+                                    <th>% посещаемости</th>
+                                    <th>Средний чек</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for class_name, count in class_attendance %}
+                                <tr>
+                                    <td><strong>{{ class_name }}</strong></td>
+                                    <td>25</td>
+                                    <td>{{ count }}</td>
+                                    <td>
+                                        {% set percentage = (count / 25 * 100)|int %}
+                                        <span class="badge {% if percentage > 80 %}bg-success{% elif percentage > 50 %}bg-warning{% else %}bg-danger{% endif %}">
+                                            {{ percentage }}%
+                                        </span>
+                                    </td>
+                                    <td>150 ₽</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted">Нет данных по классам</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Сводка отчета</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <h6>Финансовые показатели:</h6>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Общий доход</span>
+                            <span class="text-success">45,800 ₽</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Затраты на продукты</span>
+                            <span class="text-danger">28,500 ₽</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Зарплата персонала</span>
+                            <span class="text-danger">12,000 ₽</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Чистая прибыль</span>
+                            <span class="text-primary">5,300 ₽</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mb-4">
+                    <h6>Популярность блюд:</h6>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Куриный суп</span>
+                            <span class="badge bg-primary">85%</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Гречневая каша</span>
+                            <span class="badge bg-primary">78%</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Котлета с пюре</span>
+                            <span class="badge bg-primary">92%</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Компот</span>
+                            <span class="badge bg-primary">65%</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mb-4">
+                    <h6>Экспорт отчета:</h6>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-outline-success" onclick="exportPDF()">
+                            📄 Экспорт в PDF
+                        </button>
+                        <button class="btn btn-outline-primary" onclick="exportExcel()">
+                            📊 Экспорт в Excel
+                        </button>
+                        <button class="btn btn-outline-secondary" onclick="printReport()">
+                            🖨️ Печать отчета
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Рекомендации</h5>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <h6>На основе анализа:</h6>
+                    <ul class="mb-0">
+                        <li>Увеличить количество порций куриного супа</li>
+                        <li>Снизить закупку непопулярных продуктов</li>
+                        <li>Провести акцию для 10Б класса (низкая посещаемость)</li>
+                        <li>Оптимизировать график работы столовой</li>
+                    </ul>
+                </div>
+                <div class="text-center">
+                    <a href="{{ url_for('admin.dashboard') }}" class="btn btn-primary">Вернуться в панель</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function exportPDF() {
+    alert('PDF отчет будет сформирован и загружен. Функция в разработке.');
+}
+
+function exportExcel() {
+    alert('Excel файл будет сформирован и загружен. Функция в разработке.');
+}
+
+function printReport() {
+    window.print();
+}
+</script>
+
+<style>
+@media print {
+    .navbar, .card-header button, .btn {
+        display: none !important;
+    }
+
+    .card {
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+    }
+}
+</style>
+{% endblock %}

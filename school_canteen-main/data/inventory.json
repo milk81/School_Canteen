@@ -1,0 +1,65 @@
+{
+  "inventory": [
+    {
+      "id": 1,
+      "name": "Картофель",
+      "category": "vegetables",
+      "quantity": 52.0,
+      "unit": "кг",
+      "minimum": 10,
+      "expires": "2024-12-31",
+      "description": "Свежий картофель",
+      "comment": "боле мене"
+    },
+    {
+      "id": 2,
+      "name": "Курица",
+      "category": "meat",
+      "quantity": 25,
+      "unit": "кг",
+      "minimum": 5,
+      "expires": "2024-12-20",
+      "description": "Куриное филе"
+    },
+    {
+      "id": 3,
+      "name": "Молоко",
+      "category": "dairy",
+      "quantity": 30,
+      "unit": "л",
+      "minimum": 10,
+      "expires": "2024-12-15",
+      "description": "Пастеризованное молоко"
+    },
+    {
+      "id": 4,
+      "name": "Морковь",
+      "category": "vegetables",
+      "quantity": 15,
+      "unit": "кг",
+      "minimum": 5,
+      "expires": "2024-12-25",
+      "description": "Свежая морковь"
+    },
+    {
+      "id": 5,
+      "name": "Лук",
+      "category": "vegetables",
+      "quantity": 8,
+      "unit": "кг",
+      "minimum": 3,
+      "expires": "2024-12-28",
+      "description": "Репчатый лук"
+    },
+    {
+      "id": 6,
+      "name": "марковь",
+      "category": "vegetables",
+      "quantity": 5.0,
+      "unit": "кг",
+      "minimum": 10,
+      "expires": "5255-02-25",
+      "description": ""
+    }
+  ]
+}

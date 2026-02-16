@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Мои отзывы - Школьная столовая{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('student.dashboard') }}">Панель</a></li>
+                <li class="breadcrumb-item active">Мои отзывы</li>
+            </ol>
+        </nav>
+        <h1>Мои отзывы</h1>
+        <p class="text-muted">Отзывы, которые вы оставили о блюдах</p>
+    </div>
+</div>
+
+{% if reviews %}
+    <div class="row">
+        {% for review in reviews %}
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div>
+                            <h5 class="card-title mb-1">{{ review.menu_item.name }}</h5>
+                            <p class="text-muted small mb-0">
+                                {{ review.menu_item.type == 'breakfast' and 'Завтрак' or 'Обед' }} •
+                                {{ review.date[:10] }}
+                            </p>
+                        </div>
+                        <div class="text-warning">
+                            {% for i in range(review.rating) %}★{% endfor %}
+                            {% for i in range(5-review.rating) %}☆{% endfor %}
+                        </div>
+                    </div>
+
+                    <p class="card-text">{{ review.comment }}</p>
+
+                    <div class="mt-3">
+                        <span class="badge {% if review.approved %}bg-success{% else %}bg-warning{% endif %}">
+                            {% if review.approved %}Опубликован{% else %}На проверке{% endif %}
+                        </span>
+                        {% if review.menu_item.allergens %}
+                            <span class="badge bg-danger ms-1">Аллергены</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <a href="{{ url_for('student.menu') }}?date={{ review.menu_item.date }}&type={{ review.menu_item.type }}"
+                       class="btn btn-sm btn-outline-primary">Посмотреть в меню</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="text-center py-5">
+        <h4 class="text-muted">Вы еще не оставляли отзывов</h4>
+        <p>Оставляйте отзывы о блюдах, которые вы попробовали!</p>
+        <a href="{{ url_for('student.menu') }}" class="btn btn-primary">Посмотреть меню</a>
+    </div>
+{% endif %}
+{% endblock %}

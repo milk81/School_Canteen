@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}История платежей - Школьная столовая{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+  <div class="col-md-12">
+    <h1>История платежей</h1>
+    <p class="text-muted">Все ваши транзакции (пополнение, покупка питания, абонементы)</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Все платежи</h5>
+        <a href="{{ url_for('student.profile') }}" class="btn btn-sm btn-outline-secondary">Назад в профиль</a>
+      </div>
+      <div class="card-body">
+        {% if payments %}
+          <div class="list-group">
+            {% for payment in payments %}
+              <div class="list-group-item">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <strong>{{ payment.description }}</strong>
+                    <br>
+                    <small class="text-muted">{{ payment.date[:10] }} {{ payment.date[11:16] }}</small>
+                  </div>
+                  <div class="text-end">
+                    <span class="{% if payment.type == 'recharge' %}text-success{% else %}text-danger{% endif %} fw-bold">
+                      {% if payment.type == 'recharge' %}+{% else %}-{% endif %}{{ payment.amount }} ₽
+                    </span>
+                    <br>
+                    <span class="badge bg-secondary">{{ payment.type }}</span>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p class="text-muted text-center py-3">Платежей еще нет</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">Краткая статистика</h5>
+      </div>
+      <div class="card-body">
+        <p class="small text-muted">Последние 5 платежей отображаются в панели — здесь показана вся история.</p>
+        <a href="{{ url_for('student.dashboard') }}" class="btn btn-outline-primary w-100">На панель</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,289 @@
+{% extends "base.html" %}
+
+{% block title %}Профиль - Школьная столовая{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h1>Мой профиль</h1>
+        <p class="text-muted">Управление персональными данными и настройками</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Редактирование профиля</h5>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('student.profile') }}">
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <div class="profile-info">
+                                <div class="profile-label">Твой ID</div>
+                                <div class="profile-value fw-bold text-primary">{{ user.id }}</div>
+                            </div>
+                            <small class="text-muted d-block mt-1">Сообщи этот номер повару для выдачи питания</small>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="profile-info">
+                                <div class="profile-label">Имя пользователя</div>
+                                <div class="profile-value">{{ user.username }}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="profile-info">
+                                <div class="profile-label">ФИО</div>
+                                <div class="profile-value">{{ user.full_name }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="profile-info">
+                                <div class="profile-label">Класс</div>
+                                <div class="profile-value">{{ user.class }}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="profile-info">
+                                <div class="profile-label">Email</div>
+                                <div class="profile-value">{{ user.email }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <div class="profile-info">
+                                <div class="profile-label">Баланс</div>
+                                <div class="profile-value">{{ user.balance }} ₽</div>
+                            </div>
+                            <div class="mt-2">
+                                <a href="{{ url_for('student.dashboard') }}#payment" class="btn btn-sm btn-outline-success">Пополнить баланс</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h5 class="mb-3" id="allergies">Аллергии и особенности питания</h5>
+
+                    <div class="mb-3">
+                        <label for="allergies-input" class="form-label">Аллергии и пищевые ограничения</label>
+                        <textarea class="form-control" id="allergies-input" name="allergies"
+                                  rows="3" placeholder="Укажите аллергии через запятую (например, орехи, молоко, глютен)">{% if user.allergies %}{{ user.allergies|join(', ') }}{% endif %}</textarea>
+                        <div class="form-text">Эта информация поможет нам подобрать безопасное для вас питание</div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Предпочтения в питании</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="vegetarian" name="preferences" value="vegetarian" {% if 'vegetarian' in user.preferences %}checked{% endif %}>
+                                    <label class="form-check-label" for="vegetarian">Вегетарианское питание</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="halal" name="preferences" value="halal" {% if 'halal' in user.preferences %}checked{% endif %}>
+                                    <label class="form-check-label" for="halal">Халяль питание</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="diet" name="preferences" value="diet" {% if 'diet' in user.preferences %}checked{% endif %}>
+                                    <label class="form-check-label" for="diet">Диетическое питание</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="no_sugar" name="preferences" value="no_sugar" {% if 'no_sugar' in user.preferences %}checked{% endif %}>
+                                    <label class="form-check-label" for="no_sugar">Без сахара</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                    <a href="{{ url_for('student.dashboard') }}" class="btn btn-secondary">Отмена</a>
+                </form>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Безопасность</h5>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-warning">
+                    <h6>Важная информация:</h6>
+                    <ul class="mb-0">
+                        <li>Не сообщайте свой пароль никому</li>
+                        <li>Используйте сложный пароль</li>
+                        <li>Выходите из системы на общественных компьютерах</li>
+                    </ul>
+                </div>
+                <a href="#" class="btn btn-outline-warning">Сменить пароль</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Статистика питания</h5>
+            </div>
+            <div class="card-body">
+                        <div class="profile-info">
+                    <div class="profile-label">Питаний в этом месяце</div>
+                    <div class="profile-value">{{ nutrition.meals_this_month }}</div>
+                </div>
+                <div class="profile-info">
+                    <div class="profile-label">Потрачено в этом месяце</div>
+                    <div class="profile-value">{{ nutrition.spent_this_month }} ₽</div>
+                </div>
+                <div class="profile-info">
+                    <div class="profile-label">Средняя стоимость питания</div>
+                    <div class="profile-value">{{ nutrition.avg_cost }} ₽</div>
+                </div>
+                <div class="profile-info">
+                    <div class="profile-label">Последнее питание</div>
+                    <div class="profile-value">{{ nutrition.last_meal_display }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Частые аллергены</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <span class="badge bg-danger">Орехи</span>
+                    <span class="badge bg-danger">Молоко</span>
+                    <span class="badge bg-danger">Яйца</span>
+                    <span class="badge bg-danger">Рыба</span>
+                </div>
+                <p class="small text-muted">Укажите свои аллергии в форме слева, чтобы мы могли учитывать их при составлении вашего меню.</p>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-body text-center">
+                <h6>Нужна помощь?</h6>
+                <p class="small text-muted">Если у вас есть вопросы по питанию или аллергиям, обратитесь к медицинскому работнику школы.</p>
+                <a href="#" class="btn btn-outline-info btn-sm">Связаться с администрацией</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- После информации о профиле добавим -->
+<div class="card mt-4" id="recharge">
+    <div class="card-header">
+        <h5 class="mb-0">Пополнение баланса</h5>
+    </div>
+    <div class="card-body">
+        <form method="POST" action="{{ url_for('student.profile') }}">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="mb-3">
+                        <label for="recharge_amount" class="form-label">Сумма пополнения (руб)</label>
+                        <input type="number" class="form-control" id="recharge_amount"
+                               name="recharge_amount" min="100" max="10000" value="1000" required>
+                        <div class="form-text">Минимальная сумма: 100 ₽, максимальная: 10,000 ₽</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label">Быстрое пополнение</label>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-outline-primary btn-sm set-recharge" data-amount="500">
+                                500 ₽
+                            </button>
+                            <button type="button" class="btn btn-outline-primary btn-sm set-recharge" data-amount="1000">
+                                1,000 ₽
+                            </button>
+                            <button type="button" class="btn btn-outline-primary btn-sm set-recharge" data-amount="3000">
+                                3,000 ₽
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">
+                <i class="fas fa-plus-circle me-2"></i>Пополнить баланс
+            </button>
+        </form>
+
+        <div class="mt-4">
+            <h6>Способы оплаты</h6>
+            <div class="d-flex gap-3">
+                <div class="text-center">
+                    <div class="bg-light rounded-circle p-3 mb-2">
+                        <i class="fas fa-credit-card fa-2x text-primary"></i>
+                    </div>
+                    <small>Банковская карта</small>
+                </div>
+                <div class="text-center">
+                    <div class="bg-light rounded-circle p-3 mb-2">
+                        <i class="fas fa-mobile-alt fa-2x text-primary"></i>
+                    </div>
+                    <small>Мобильный платеж</small>
+                </div>
+                <div class="text-center">
+                    <div class="bg-light rounded-circle p-3 mb-2">
+                        <i class="fas fa-qrcode fa-2x text-primary"></i>
+                    </div>
+                    <small>QR-код</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.querySelectorAll('.set-recharge').forEach(button => {
+    button.addEventListener('click', function() {
+        document.getElementById('recharge_amount').value = this.dataset.amount;
+    });
+});
+</script>
+
+<!-- Добавим историю платежей -->
+<div class="card mt-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Последние платежи</h5>
+        <a href="{{ url_for('student.payments') }}" class="btn btn-sm btn-outline-primary">
+            Вся история
+        </a>
+    </div>
+    <div class="card-body">
+        {% if payments %}
+            <div class="list-group">
+                {% for payment in payments %}
+                <div class="list-group-item">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <strong>{{ payment.description }}</strong>
+                            <br>
+                            <small class="text-muted">{{ payment.date[:10] }} {{ payment.date[11:16] }}</small>
+                        </div>
+                        <div class="text-end">
+                            <span class="{% if payment.type == 'recharge' %}text-success{% else %}text-danger{% endif %} fw-bold">
+                                {% if payment.type == 'recharge' %}+{% else %}-{% endif %}{{ payment.amount }} ₽
+                            </span>
+                            <br>
+                            <span class="badge bg-secondary">{{ payment.type }}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-muted text-center py-3">Платежей еще нет</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,35 @@
+{
+  "orders": [
+    {
+      "id": 1,
+      "student_id": 4,
+      "meal_type": "breakfast",
+      "date": "2026-02-09",
+      "time": "18:31",
+      "issued_by": 3,
+      "status": "issued"
+    },
+    {
+      "id": 2,
+      "student_id": 2,
+      "menu_item_id": 1,
+      "menu_item_name": "Каша молочная",
+      "date": "2026-02-09",
+      "time": "19:19",
+      "type": "breakfast",
+      "price": 50,
+      "status": "ordered"
+    },
+    {
+      "id": 3,
+      "student_id": 2,
+      "menu_item_id": 2,
+      "menu_item_name": "Омлет",
+      "date": "2026-02-09",
+      "time": "19:20",
+      "type": "breakfast",
+      "price": 60,
+      "status": "ordered"
+    }
+  ]
+}
